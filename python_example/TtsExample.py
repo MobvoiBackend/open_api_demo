@@ -12,7 +12,7 @@ secret = '你的secret'
 message = '+'.join([appkey, secret, timestamp])
 
 m = hashlib.md5()
-m.update(message)
+m.update(message.encode('utf-8'))
 signature = m.hexdigest()
 
 http_url = 'https://open.mobvoi.com/api/tts/v1'
