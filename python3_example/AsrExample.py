@@ -3,6 +3,7 @@ import hashlib
 import json
 import time
 import requests
+import wave
 
 import websockets
 
@@ -32,7 +33,7 @@ class AsrWsClient:
         signature = m.hexdigest()
         req = {
             "signal": signal,
-            "contentType": "audio/x-wav;codec=pcm;bit=16;rate=16000",
+            "contentType": "audio/x-wav;rate=16000",#;codec=pcm;bit=16;",
             "silence_detection": "enable",
             "partial_result": "enable",
             "appKey": appkey,
@@ -58,17 +59,35 @@ class AsrWsClient:
             await ws.send(json.dumps(client_request))
             res = await ws.recv()
             print(res)
+            result_type = json.loads(res)["type"]
 
             for seq, chunk in enumerate(
                     AsrWsClient.slice_data(wav_data, segment_size)):
                 try:
                     await ws.send(chunk)
                     rec = await asyncio.wait_for(ws.recv(),
-                                                 timeout=1,
-                                                 loop=None)
+                                                 timeout=0.01)
                     print(rec)
+                    result_type = json.loads(rec)["type"]
+                    if result_type == "server_error" or result_type == "speech_end":
+                        break
+                    if result_type == "silence":
+                        await ws.send(json.dumps({"signal": "end"}))
+                        break
                 except asyncio.TimeoutError:
                     pass
+            while result_type != "speech_end" or result_type == "server_error":
+                try:
+                    rec = await asyncio.wait_for(ws.recv(), timeout=1.0)
+                except asyncio.TimeoutError:
+                    continue
+                print(rec)
+                result_type = json.loads(rec)["type"]
+                if result_type == "silence":
+                    await ws.send(json.dumps({"signal": "end"}))
+            if result_type == "speech_end":
+                result = json.loads(rec)["content"]
+                print(f"final result: {result}")
 
             print("send over")
 
