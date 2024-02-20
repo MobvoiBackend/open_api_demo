@@ -76,7 +76,7 @@ class AsrWsClient:
                         break
                 except asyncio.TimeoutError:
                     pass
-            while result_type != "speech_end" or result_type == "server_error":
+            while result_type != "speech_end" or result_type != "server_error":
                 try:
                     rec = await asyncio.wait_for(ws.recv(), timeout=1.0)
                 except asyncio.TimeoutError:
