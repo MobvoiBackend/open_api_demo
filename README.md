@@ -14,6 +14,6 @@
 
 - go
 
-- js
+- [js](./js_example/README.md)
 
 - [C++](./cpp_example/README.md)

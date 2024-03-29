@@ -1,0 +1,42 @@
+{
+  "name": "@openapi/open-api-sdk",
+  "author": "xianqiang.meng@mobvoi.com",
+  "version": "1.0.0",
+  "main": "lib/bundle-cjs",
+  "module": "lib/bundle-es.js",
+  "browser": "lib/bundle-umd.js",
+  "scripts": {
+    "build": "rollup -c --bundleConfigAsCjs",
+    "serve": "rollup -c -w",
+    "start": "node ./server/server.js"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.23.5",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-json": "^6.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-strip": "^3.0.4",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.5",
+    "express": "^4.18.2",
+    "rollup": "^4.6.1",
+    "rollup-plugin-node-externals": "^6.1.2",
+    "rollup-plugin-polyfill-node": "^0.13.0",
+    "rollup-plugin-postcss": "^4.0.2",
+    "tslib": "^2.6.2"
+  },
+  "dependencies": {
+    "@microsoft/fetch-event-source": "^2.0.1",
+    "js-md5": "^0.8.3",
+    "trtc-js-sdk": "^4.15.18"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.mobvoi.com:webfront/moyin/open-api-sdk.git"
+  },
+  "license": "ISC"
+}
