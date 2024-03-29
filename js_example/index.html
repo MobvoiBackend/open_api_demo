@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>调试</title>
+    </head>
+    <body>
+        <div onclick="play()">tts</div>
+        <script type="module">
+            import requests from './main.js';
+            window.requests = requests;
+        </script>
+        <script>
+            function play() {
+                requests.chatSync((res) => {
+                    console.log(res);
+                });
+            }
+        </script>
+    </body>
+</html>
