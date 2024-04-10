@@ -27,13 +27,13 @@ public class ChatExample {
 
   private static final String CHAT_STREAM_URL = "https://open-ka.mobvoi.com/api/chat/v2/chat";
 
-  private static final String SET_UP_URL = "https://open.mobvoi.com/api/chat/v1/setup";
+  private static final String SET_UP_URL = "https://open-ka.mobvoi.com/api/chat/v1/setup";
 
-  private static final String SET_UP_UPDATE_URL = "https://open.mobvoi.com/api/chat/v1/setupUpdate";
+  private static final String SET_UP_UPDATE_URL = "https://open-ka.mobvoi.com/api/chat/v1/setupUpdate";
 
-  private static final String GET_SET_UP_STATUS_URL = "https://open.mobvoi.com/api/chat/v1/getSetupStatus";
+  private static final String GET_SET_UP_STATUS_URL = "https://open-ka.mobvoi.com/api/chat/v1/getSetupStatus";
 
-  private static final String SUMMARY_URL = "https://open.mobvoi.com/api/chat/v1/summary";
+  private static final String SUMMARY_URL = "https://open-ka.mobvoi.com/api/chat/v1/summary";
 
   private static final String QA_MOBVOI_STREAM_URL = "https://open-ka.mobvoi.com/api/chat/v1/qaMobvoiStream";
 
