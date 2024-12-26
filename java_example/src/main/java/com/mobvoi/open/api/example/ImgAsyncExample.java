@@ -28,23 +28,22 @@ public class ImgAsyncExample {
     private static final String IMGTOPROMPT_URL = "https://open.mobvoi.com/api/imgToPrompt";
 
 
-    private static final String APPKEY = "26745D67ED5430EC07D19068D33CCF29";
+    private static final String APPKEY = "你的appkey";
 
-    private static final String SECRET = "EF3625F3A6DAD8C734CFBDCB55414ABC";
-    private static final String prompt = "落霞与孤鹜齐飞";
+    private static final String SECRET = "你的secret";
+    private static final String prompt = "提示文案";
 
     //图片转文本接口,原始图片URl
-    private static final String original_image = "https://mobvoi-digitalhuman-public.cn-bj.ufileos.com/sdxl/img_tmp/0f0ea12308_79fae1ac-bdf3-11ef-b149-5254002b285b_wm_1.png";
-
-    //任务id
-    private static final String taskId = "9019";
+    private static final String original_image = "可公网访问的图片URL地址";
+    //查询任务状态接口的任务id
+    private static final String taskId = "任务id";
 
     public static void main(String[] args) {
         //提交任务
         imgAsyncSample();
 
         //查询任务
-        getResult(taskId);
+       // getResult(taskId);
 
         //图片转文本
         // imgToPrompt();
